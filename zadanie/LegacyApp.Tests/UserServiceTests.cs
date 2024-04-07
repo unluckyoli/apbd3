@@ -80,9 +80,35 @@ public class UserServiceTests
         //Assert.Equal(false,result);
         Assert.False(result);
     }
+
+    [Fact]
+    public void AddUser_ReturnsFalseWhenYoungerThen21YearsOld()
+    {
+        //Arange
+        var userService = new UserService();
+        
+        //Act
+        var result = userService.AddUser(
+            "Leo",
+            "Messi",
+            "messi@pjwstk.edu.pl",
+            DateTime.Now.AddYears(5),
+            1
+        );
+        
+        //Assert
+        Assert.False(result);
+    }
+
+
+    [Fact]
+    public void AddUser_ReturnsTrueWhenVeryImportantClient()
+    {
+        
+    }
     
     
-    // AddUser_ReturnsFalseWhenYoungerThen21YearsOld
+    // AddUser_ReturnsFalseWhenYoungerThen21YearsOld  =========================
     // AddUser_ReturnsTrueWhenVeryImportantClient
     // AddUser_ReturnsTrueWhenImportantClient
     // AddUser_ReturnsTrueWhenNormalClient
