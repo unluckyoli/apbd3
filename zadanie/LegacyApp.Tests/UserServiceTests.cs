@@ -89,12 +89,14 @@ public class UserServiceTests
         
         //Act
         var result = userService.AddUser(
-            "Leo",
-            "Messi",
-            "messi@pjwstk.edu.pl",
-            DateTime.Now.AddYears(5),
+            "Jan",
+            "Kowalski",
+            "kowalski@wp.pl",
+            DateTime.Now.AddYears(-15),
             1
         );
+        
+        
         
         //Assert
         Assert.False(result);
@@ -104,12 +106,23 @@ public class UserServiceTests
     [Fact]
     public void AddUser_ReturnsTrueWhenVeryImportantClient()
     {
+
+        var userService = new UserService();
+        var result = userService.AddUser(
+            "Jan",
+            "Malewski",
+            "malewski@gmail.pl",
+            DateTime.Parse("2000-01-01"),
+            2
+        );
         
+        Assert.True(result);
+
     }
     
     
     // AddUser_ReturnsFalseWhenYoungerThen21YearsOld  =========================
-    // AddUser_ReturnsTrueWhenVeryImportantClient
+    // AddUser_ReturnsTrueWhenVeryImportantClient ===================
     // AddUser_ReturnsTrueWhenImportantClient
     // AddUser_ReturnsTrueWhenNormalClient
     // AddUser_ReturnsFalseWhenNormalClientWithNoCreditLimit
