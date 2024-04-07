@@ -121,12 +121,71 @@ public class UserServiceTests
     }
     
     
+    [Fact]
+    public void AddUser_ReturnsTrueWhenImportantClient()
+    {
+        //Arrange
+        var userService = new UserService();
+        
+        //Act
+        var result = userService.AddUser(
+            "Jan",
+            "Smith",
+            "smith@gmail.pl",
+            DateTime.Parse("2000-01-01"),
+            3
+        );
+
+        //Assert
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void AddUser_ReturnsTrueWhenNormalClient()
+    {
+        //Arrange
+        var userService = new UserService();
+        
+        //Act
+        var result = userService.AddUser(
+            "Jan",
+            "Andrzejewicz",
+            "andrzejewicz@wp.pl",
+            DateTime.Parse("2000-01-01"),
+            6
+        );
+
+        //Assert
+        Assert.True(result);
+    }
+
+    [Fact]
+    public void AddUser_ReturnsFalseWhenNormalClientWithNoCreditLimit()
+    {
+        //Arrange
+        var userService = new UserService();
+        
+        //Act
+        var result = userService.AddUser(
+            "Jan",
+            "Kwiatkowski",
+            "kwiatkowski@wp.pl",
+            DateTime.Parse("2000-01-01"),
+            5
+        );
+
+        //Assert
+        Assert.False(result);
+    }
+    
+    
+    
     // AddUser_ReturnsFalseWhenYoungerThen21YearsOld  =========================
     // AddUser_ReturnsTrueWhenVeryImportantClient ===================
     // AddUser_ReturnsTrueWhenImportantClient
     // AddUser_ReturnsTrueWhenNormalClient
     // AddUser_ReturnsFalseWhenNormalClientWithNoCreditLimit
-    // AddUser_ThrowsExceptionWhenUserDoesNotExist
+    // AddUser_ThrowsExceptionWhenUserDoesNotExist ===================
     // AddUser_ThrowsExceptionWhenUserNoCreditLimitExistsForUser
     
     
