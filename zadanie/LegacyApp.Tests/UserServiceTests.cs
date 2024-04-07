@@ -66,21 +66,19 @@ public class UserServiceTests
         //Act
         
         
-        Action action = () => { userService.AddUser(
+        var result  = userService.AddUser(
             "Jan",
-            "kowalski",
+            "Kowalski",
             "kowalskigmail.com",
             DateTime.Parse("2000-01-01"),
-            100
-        );};
+            1
+        );
         
         
         //Assert
-
-        
         
         //Assert.Equal(false,result);
-        Assert.;
+        Assert.False(result);
     }
     
     
