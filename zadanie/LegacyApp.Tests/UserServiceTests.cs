@@ -92,7 +92,7 @@ public class UserServiceTests
             "Jan",
             "Kowalski",
             "kowalski@wp.pl",
-            DateTime.Now.AddYears(-15),
+            DateTime.Parse("2010-01-01"),
             1
         );
         
@@ -107,7 +107,10 @@ public class UserServiceTests
     public void AddUser_ReturnsTrueWhenVeryImportantClient()
     {
 
+        //Arrange
         var userService = new UserService();
+        
+        //Act
         var result = userService.AddUser(
             "Jan",
             "Malewski",
@@ -116,6 +119,8 @@ public class UserServiceTests
             2
         );
         
+        
+        //Assert
         Assert.True(result);
 
     }
@@ -148,11 +153,11 @@ public class UserServiceTests
         
         //Act
         var result = userService.AddUser(
-            "Jan",
-            "Andrzejewicz",
+            "Leo",
+            "Kwiatkowski",
             "andrzejewicz@wp.pl",
             DateTime.Parse("2000-01-01"),
-            6
+            5
         );
 
         //Assert
@@ -168,10 +173,10 @@ public class UserServiceTests
         //Act
         var result = userService.AddUser(
             "Jan",
-            "Kwiatkowski",
+            "Kowalski",
             "kwiatkowski@wp.pl",
             DateTime.Parse("2000-01-01"),
-            5
+            1
         );
 
         //Assert
@@ -182,11 +187,11 @@ public class UserServiceTests
     
     // AddUser_ReturnsFalseWhenYoungerThen21YearsOld  =========================
     // AddUser_ReturnsTrueWhenVeryImportantClient ===================
-    // AddUser_ReturnsTrueWhenImportantClient
-    // AddUser_ReturnsTrueWhenNormalClient
-    // AddUser_ReturnsFalseWhenNormalClientWithNoCreditLimit
+    // AddUser_ReturnsTrueWhenImportantClient ============
+    // AddUser_ReturnsTrueWhenNormalClient ==============
+    // AddUser_ReturnsFalseWhenNormalClientWithNoCreditLimit ==============
     // AddUser_ThrowsExceptionWhenUserDoesNotExist ===================
-    // AddUser_ThrowsExceptionWhenUserNoCreditLimitExistsForUser
+    // AddUser_ThrowsExceptionWhenUserNoCreditLimitExistsForUser ==============
     
     
     
