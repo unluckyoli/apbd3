@@ -182,6 +182,32 @@ public class UserServiceTests
         //Assert
         Assert.False(result);
     }
+
+    [Fact]
+    public void AddUser_ThrowsExceptionWhenUserNoCreditLimitExistsForUser()
+    {
+        //Arrange
+        var userService = new UserService();
+
+        //Act 
+
+
+        Action result = () =>
+        {
+            userService.AddUser(
+                "Jan",
+                "Andrzejewicz",
+                "andrzejewicz@wp.pl",
+                DateTime.Parse("2000-01-01"),
+                6
+            );
+        };
+
+    //Assert
+        Assert.Throws<ArgumentException>(result);
+
+    }
+    
     
     
     
